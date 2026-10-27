@@ -1,0 +1,8 @@
+Um cuidado que o teste vai revelar
+
+Com o arquivo vazio, o programa começa com a lista vazia. Se você cadastrar algo, o
+salvar_dados grava e o arquivo volta a ficar válido. Mas pense: se o arquivo estava
+corrompido com dados importantes, e o programa começa vazio e grava por cima, o que
+acontece com o que estava lá? Não precisa resolver agora, só guarde a pergunta. Em
+programas reais isso se resolve com cópia de segurança (backup).
+
