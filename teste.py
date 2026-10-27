@@ -1,5 +1,7 @@
-#from datetime import datetime
+from datetime import datetime
 
-#print(agora)
-#print(type(agora))
-#print(agora.strftime('%Y-%m-%d'))
+data = datetime.now()
+
+data_formatada = data.strftime('%Y-%m-%d')
+hora_formatada = data.strftime('%H:%M:%S')
+print(data_formatada, hora_formatada)
