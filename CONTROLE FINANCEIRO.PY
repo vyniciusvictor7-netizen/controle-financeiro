@@ -1,5 +1,6 @@
 import json
 from datetime import datetime
+import uuid
 
 def carregar_dados():
     try:
@@ -23,7 +24,8 @@ def adicionar_movimentacao():
     movimentacao['Valor'] = valor
     movimentacao['Tipo'] = tipo
     data = datetime.now()
-    movimentacao['DataHora'] = data.strftime('%Y-%m-%d %H:%M:%S') 
+    movimentacao['DataHora'] = data.strftime('%Y-%m-%d %H:%M:%S')
+    movimentacao['ID'] = str(uuid.uuid4())
     lista_movimentacao.append(movimentacao)
     salvar_dados(lista_movimentacao)
 

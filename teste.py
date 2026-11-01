@@ -1,8 +1,9 @@
-from datetime import datetime
-data = "2026-12-25 18:30:00"
-data_objeto = datetime.strptime(data,"%Y-%m-%d %H:%M:%S")
-print(type(data_objeto))
-print(data_objeto)
+import uuid
 
-mostrar_data = data_objeto.strftime("%d/%m/%Y %H:%M" )
-print(mostrar_data)
+novo_id = uuid.uuid4()
+print(novo_id)
+print(type(novo_id))
+print(len(str(novo_id)))
+
+import json
+print(json.dumps({'ID': str(novo_id)}))
