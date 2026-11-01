@@ -154,7 +154,9 @@ def validar():
     return tipo
 
 def mostrar_movimentacao(numero, mov):
-    print(f'{numero}. {mov["Descricao"]} - R$ {mov["Valor"]:.2f} - {mov["Tipo"].capitalize()}')
+    data = datetime.strptime(mov["DataHora"], "%Y-%m-%d %H:%M:%S")
+    data_br = data.strftime("%d/%m/%Y %H:%M")
+    print(f'{numero}. {mov["Descricao"]} - R$ {mov["Valor"]:.2f} - {mov["Tipo"].capitalize()} - {data_br}')
 
 def listar_movimentacoes():
     if not lista_movimentacao:
