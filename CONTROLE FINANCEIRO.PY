@@ -1,4 +1,5 @@
 import json
+from datetime import datetime
 
 def carregar_dados():
     try:
@@ -21,6 +22,8 @@ def adicionar_movimentacao():
     tipo = validar()
     movimentacao['Valor'] = valor
     movimentacao['Tipo'] = tipo
+    data = datetime.now()
+    movimentacao['DataHora'] = data.strftime('%Y-%m-%d %H:%M:%S') 
     lista_movimentacao.append(movimentacao)
     salvar_dados(lista_movimentacao)
 

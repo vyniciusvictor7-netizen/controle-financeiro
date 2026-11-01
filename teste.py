@@ -1,6 +1,5 @@
 from datetime import datetime
 
-data = datetime.now()
-
-data_hora = data.strftime('%Y-%m-%d %H:%M:%S') 
-print(data_hora)
+data_str = "05/07/2024"
+data = datetime.strptime(data_str, "%d/%m/%Y")
+print(data)
