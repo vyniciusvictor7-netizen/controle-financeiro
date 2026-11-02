@@ -168,10 +168,10 @@ def listar_movimentacoes():
         for i, mov in enumerate(lista_movimentacao, start = 1):
             mostrar_movimentacao(i,mov)
 
-def calcular_totais():
+def calcular_totais(lista):
     entradas = 0
     saidas = 0
-    for n in (lista_movimentacao):
+    for n in (lista):
         if n['Tipo'] == 'entrada':
             entradas += n['Valor']
         elif n['Tipo'] == 'saída':
@@ -179,13 +179,13 @@ def calcular_totais():
     return entradas, saidas
         
 def saldo_total():
-    entradas, saidas = calcular_totais()
+    entradas, saidas = calcular_totais(lista_movimentacao)
     saldo = entradas - saidas
     return f'\nR$: {saldo:.2f}'
 
 def resumo():
     print('\n===== RESUMO =====\n')
-    entradas, saidas = calcular_totais()
+    entradas, saidas = calcular_totais(lista_movimentacao)
     print(f'Total de entradas: R$ {entradas:.2f}')
     print(f'Total de saídas: R$ {saidas:.2f}')
     print(saldo_total())
