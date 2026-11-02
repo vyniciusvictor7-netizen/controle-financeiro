@@ -1,9 +1,8 @@
-import uuid
+def calcular_totais(lista):
+    return len(lista)
 
-novo_id = uuid.uuid4()
-print(novo_id)
-print(type(novo_id))
-print(len(str(novo_id)))
+def saldo_total(lista):
+    return calcular_totais(lista)
 
-import json
-print(json.dumps({'ID': str(novo_id)}))
+print(saldo_total([10, 20, 30]))
+print(saldo_total(['a']))
