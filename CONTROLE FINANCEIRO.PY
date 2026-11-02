@@ -178,17 +178,17 @@ def calcular_totais(lista):
             saidas += n['Valor']   
     return entradas, saidas
         
-def saldo_total():
-    entradas, saidas = calcular_totais(lista_movimentacao)
+def saldo_total(lista):
+    entradas, saidas = calcular_totais(lista)
     saldo = entradas - saidas
-    return f'\nR$: {saldo:.2f}'
+    return saldo
 
 def resumo():
     print('\n===== RESUMO =====\n')
     entradas, saidas = calcular_totais(lista_movimentacao)
     print(f'Total de entradas: R$ {entradas:.2f}')
     print(f'Total de saídas: R$ {saidas:.2f}')
-    print(saldo_total())
+    print(f'Saldo: R${saldo_total(lista_movimentacao):.2f}')
 
 def encerrar():
     print('\nPrograma encerrado.\n')        
@@ -219,7 +219,7 @@ while True:
     elif opcao == 2:
         listar_movimentacoes()
     elif opcao == 3:
-        print(saldo_total())
+        print(f'Saldo: R$ {saldo_total(lista_movimentacao):.2f}')
     elif opcao == 4:
         resumo()
     elif opcao == 5:
