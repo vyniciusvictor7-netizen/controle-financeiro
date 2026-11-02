@@ -14,3 +14,8 @@ def calcular_totais(lista):
         elif n['Tipo'] == 'saída':
             saidas += n['Valor']   
     return entradas, saidas
+
+def saldo_total(lista):
+    entradas, saidas = calcular_totais(lista)
+    saldo = entradas - saidas
+    return saldo

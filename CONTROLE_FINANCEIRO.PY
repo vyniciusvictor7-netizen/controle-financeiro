@@ -163,17 +163,12 @@ def listar_movimentacoes():
         for i, mov in enumerate(lista_movimentacao, start = 1):
             mostrar_movimentacao(i,mov)
 
-def saldo_total(lista):
-    entradas, saidas = dados_e_calculos.calcular_totais(lista)
-    saldo = entradas - saidas
-    return saldo
-
 def resumo():
     print('\n===== RESUMO =====\n')
     entradas, saidas = dados_e_calculos.calcular_totais(lista_movimentacao)
     print(f'Total de entradas: R$ {entradas:.2f}')
     print(f'Total de saídas: R$ {saidas:.2f}')
-    print(f'Saldo: R$ {saldo_total(lista_movimentacao):.2f}')
+    print(f'Saldo: R$ {dados_e_calculos.saldo_total(lista_movimentacao):.2f}')
 
 def encerrar():
     print('\nPrograma encerrado.\n')        
@@ -204,7 +199,7 @@ while True:
     elif opcao == 2:
         listar_movimentacoes()
     elif opcao == 3:
-        print(f'Saldo: R$ {saldo_total(lista_movimentacao):.2f}')
+        print(f'Saldo: R$ {dados_e_calculos.saldo_total(lista_movimentacao):.2f}')
     elif opcao == 4:
         resumo()
     elif opcao == 5:
