@@ -2,7 +2,8 @@ from datetime import datetime
 import uuid
 import dados_e_calculos
 
-lista_movimentacao = dados_e_calculos.carregar_dados()
+if __name__ == "__main__":
+    lista_movimentacao = dados_e_calculos.carregar_dados()
 
 def adicionar_movimentacao(): 
     movimentacao = dict()
@@ -174,32 +175,34 @@ menu = '''
 9 - Encerrar programa
 
 Escolha uma opção: '''
-while True:
-    try:
-        opcao = int(input(menu))
-    except ValueError:
-        print('\nDigite um número válido!')
-        continue
-    
-    if opcao == 1:
-        adicionar_movimentacao()      
-    elif opcao == 2:
-        listar_movimentacoes()
-    elif opcao == 3:
-        print(f'Saldo: R$ {dados_e_calculos.saldo_total(lista_movimentacao):.2f}')
-    elif opcao == 4:
-        resumo()
-    elif opcao == 5:
-        buscar_movimentacao()
-    elif opcao == 6:
-        excluir_movimentacao()
-    elif opcao == 7:
-        filtrar_por_tipo()
-    elif opcao == 8:
-        editar_movimentacao()
-    elif opcao == 9:
-        encerrar()
-        break
-    else:
-        print('\nOpção inválida')
-    
+if __name__ == "__main__":
+    lista_movimentacao = dados_e_calculos.carregar_dados()
+    while True:
+        try:
+            opcao = int(input(menu))
+        except ValueError:
+            print('\nDigite um número válido!')
+            continue
+        
+        if opcao == 1:
+            adicionar_movimentacao()      
+        elif opcao == 2:
+            listar_movimentacoes()
+        elif opcao == 3:
+            print(f'Saldo: R$ {dados_e_calculos.saldo_total(lista_movimentacao):.2f}')
+        elif opcao == 4:
+            resumo()
+        elif opcao == 5:
+            buscar_movimentacao()
+        elif opcao == 6:
+            excluir_movimentacao()
+        elif opcao == 7:
+            filtrar_por_tipo()
+        elif opcao == 8:
+            editar_movimentacao()
+        elif opcao == 9:
+            encerrar()
+            break
+        else:
+            print('\nOpção inválida')
+        
