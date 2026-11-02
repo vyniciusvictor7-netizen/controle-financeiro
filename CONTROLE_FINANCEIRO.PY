@@ -1,6 +1,7 @@
 import json
 from datetime import datetime
 import uuid
+import dados_e_calculos
 
 def carregar_dados():
     try:
@@ -44,9 +45,9 @@ def filtrar_por_tipo():
     if not lista_movimentacao:
         print('\nNenhuma movimentação cadastrada.')
         return
-    filtro = normaliza_tipo(input('\nFiltrar lista por - [ENTRADA] / [SAÍDA]: '))
+    filtro = dados_e_calculos.normaliza_tipo(input('\nFiltrar lista por - [ENTRADA] / [SAÍDA]: '))
     while filtro is None:
-        filtro = normaliza_tipo(input('\nOpção inválida. Digite [ENTRADA] / [SAÍDA]: '))
+        filtro = dados_e_calculos.normaliza_tipo(input('\nOpção inválida. Digite [ENTRADA] / [SAÍDA]: '))
     encontrou = False
 
     for i, mov in enumerate(lista_movimentacao, start=1):
@@ -64,7 +65,7 @@ def buscar_movimentacao():
     pesquisa = input('\nDigite a descrição exata ou o tipo: ').strip().lower()
     while not pesquisa:
         pesquisa = input('\nDigite a descrição exata ou o tipo: ').strip().lower()
-    tipo_pesquisado = normaliza_tipo(pesquisa)
+    tipo_pesquisado = dados_e_calculos.normaliza_tipo(pesquisa)
     encontrou = False
 
     for i, mov in enumerate(lista_movimentacao, start=1):
@@ -132,27 +133,21 @@ def editar_movimentacao():
             print('\nO tipo não foi alterado.')
             break
         else:
-            novo_tipo = normaliza_tipo(novo_tipo)
+            novo_tipo = dados_e_calculos.normaliza_tipo(novo_tipo)
             while novo_tipo is None:
                 print('\nTipo inválido.')
-                novo_tipo = normaliza_tipo(input('\nDigite Entrada ou Saída: '))
+                novo_tipo = dados_e_calculos.normaliza_tipo(input('\nDigite Entrada ou Saída: '))
             lista_movimentacao[posicao - 1]['Tipo'] = novo_tipo
             salvar_dados(lista_movimentacao)
             print('\nO tipo foi alterado.')
             break
 
-def normaliza_tipo(texto):
-    texto = texto.strip().lower().replace('saida','saída')
-    if texto == 'entrada' or texto == 'saída':
-        return texto
-    
-    return None
 
 def validar():    
-    tipo = normaliza_tipo(input('Tipo: '))
+    tipo = dados_e_calculos.normaliza_tipo(input('Tipo: '))
     while tipo is None:
         print('Tipo inválido')
-        tipo = normaliza_tipo(input('Digite Entrada ou Saída: '))
+        tipo = dados_e_calculos.normaliza_tipo(input('Digite Entrada ou Saída: '))
     return tipo
 
 def mostrar_movimentacao(numero, mov):
@@ -188,7 +183,7 @@ def resumo():
     entradas, saidas = calcular_totais(lista_movimentacao)
     print(f'Total de entradas: R$ {entradas:.2f}')
     print(f'Total de saídas: R$ {saidas:.2f}')
-    print(f'Saldo: R${saldo_total(lista_movimentacao):.2f}')
+    print(f'Saldo: R$ {saldo_total(lista_movimentacao):.2f}')
 
 def encerrar():
     print('\nPrograma encerrado.\n')        
