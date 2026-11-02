@@ -1,21 +1,8 @@
-import json
 from datetime import datetime
 import uuid
 import dados_e_calculos
 
-def carregar_dados():
-    try:
-        with open('movimentacoes.json', 'r', encoding= 'utf-8') as arquivo:
-            ler = json.load(arquivo)
-            return ler
-    except (FileNotFoundError, json.JSONDecodeError):
-        return []
-
-def salvar_dados(lista):
-    with open ('movimentacoes.json', 'w', encoding='utf-8') as arquivo:
-        json.dump(lista, arquivo, ensure_ascii=False)
-
-lista_movimentacao = carregar_dados()
+lista_movimentacao = dados_e_calculos.carregar_dados()
 
 def adicionar_movimentacao(): 
     movimentacao = dict()
@@ -28,7 +15,7 @@ def adicionar_movimentacao():
     movimentacao['DataHora'] = data.strftime('%Y-%m-%d %H:%M:%S')
     movimentacao['ID'] = str(uuid.uuid4())
     lista_movimentacao.append(movimentacao)
-    salvar_dados(lista_movimentacao)
+    dados_e_calculos.salvar_dados(lista_movimentacao)
 
 def pedir_valor():
     while True:
@@ -82,7 +69,7 @@ def excluir_movimentacao():
     listar_movimentacoes() 
     remover = pedir_posicao('\nQual movimentação voce quer remover: ')
     lista_movimentacao.pop(remover - 1)
-    salvar_dados(lista_movimentacao)
+    dados_e_calculos.salvar_dados(lista_movimentacao)
     print('\nMovimentação removida com sucesso')     
     
 def pedir_posicao(mensagem):
@@ -108,7 +95,7 @@ def editar_movimentacao():
         print('\nA descrição não foi alterada.')
     else:
         lista_movimentacao[posicao - 1]['Descricao'] = nova_descricao
-        salvar_dados(lista_movimentacao)
+        dados_e_calculos.salvar_dados(lista_movimentacao)
         print('\nEdição concluída!')    
     while True:
         try:
@@ -123,7 +110,7 @@ def editar_movimentacao():
                 else:
                     lista_movimentacao[posicao -1]['Valor'] = float_valor
                     print('\nValor alterado.')
-                    salvar_dados(lista_movimentacao)
+                    dados_e_calculos.salvar_dados(lista_movimentacao)
                     break
         except ValueError:
             print('\nDigite um número válido.')
@@ -138,7 +125,7 @@ def editar_movimentacao():
                 print('\nTipo inválido.')
                 novo_tipo = dados_e_calculos.normaliza_tipo(input('\nDigite Entrada ou Saída: '))
             lista_movimentacao[posicao - 1]['Tipo'] = novo_tipo
-            salvar_dados(lista_movimentacao)
+            dados_e_calculos.salvar_dados(lista_movimentacao)
             print('\nO tipo foi alterado.')
             break
 
