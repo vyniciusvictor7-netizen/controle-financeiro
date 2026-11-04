@@ -8,6 +8,8 @@ if __name__ == "__main__":
 def adicionar_movimentacao(): 
     movimentacao = dict()
     movimentacao['Descricao'] = input('Descrição: ').strip().lower()
+    while not movimentacao['Descricao']:
+        movimentacao['Descricao'] = input('Descrição não pode ficar em branco, Digite alguma descrição: ').strip().lower()
     valor = pedir_valor()
     tipo = validar()
     movimentacao['Valor'] = valor
