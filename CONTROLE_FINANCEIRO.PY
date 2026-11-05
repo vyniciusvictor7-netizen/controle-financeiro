@@ -2,9 +2,6 @@ from datetime import datetime
 import uuid
 import dados_e_calculos
 
-if __name__ == "__main__":
-    lista_movimentacao = dados_e_calculos.carregar_dados()
-
 def adicionar_movimentacao(): 
     movimentacao = dict()
     movimentacao['Descricao'] = input('Descrição: ').strip().lower()
