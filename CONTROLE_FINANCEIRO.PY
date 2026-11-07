@@ -129,7 +129,6 @@ def editar_movimentacao():
             print('\nO tipo foi alterado.')
             break
 
-
 def validar():    
     tipo = dados_e_calculos.normaliza_tipo(input('Tipo: '))
     while tipo is None:
